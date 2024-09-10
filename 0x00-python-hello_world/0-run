@@ -1,0 +1,4 @@
+#!/bin/bash
+# Python script saved in the $PYFILE environment variable
+
+python3 "$PYFILE"
