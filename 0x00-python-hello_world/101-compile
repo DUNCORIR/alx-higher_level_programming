@@ -4,6 +4,6 @@ import py_compile
 # Retrieve the Python file name from the environment variable
 pyfile = os.getenv('PYFILE')
 if pyfile:
-    py_compile.compile(pyfile, cfile=f"{pyfile}c", dfile=None)
+    py_compile.compile(pyfile, cfile="{}c".format(pyfile), dfile=None)
 else:
     print("Environment variable PYFILE is not set.")
