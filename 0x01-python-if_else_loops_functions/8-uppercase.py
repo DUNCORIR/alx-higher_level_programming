@@ -6,4 +6,4 @@ def uppercase(str):
             result = result + chr(ord(c) - 32)
         else:
             result = result + c  # Accumulate as is
-    print("{}".format(result))  # Print the result after processing all characters
+    print("{}".format(result))  # Print result after processing all characters
