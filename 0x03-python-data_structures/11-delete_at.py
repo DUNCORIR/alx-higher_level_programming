@@ -4,8 +4,8 @@ def delete_at(my_list=[], idx=0):
     if idx < 0 or idx >= len(my_list):
         return my_list
 
-    # create new list less element at given index
-    new_list = my_list[:idx] + my_list[idx + 1:]
+    # Remove element at given index
+    del my_list[idx]
 
     # return modified list
-    return new_list
+    return my_list
