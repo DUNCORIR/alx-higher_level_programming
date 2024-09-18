@@ -10,6 +10,4 @@ def best_score(a_dictionary):
         if value > best_value:
             best_value = value  # If current value greater than best_value
             best_value = key  # Update best_key to the current key
-
-
-return best_key  # Return the key with the best score
+    return best_key  # Return the key with the best score
