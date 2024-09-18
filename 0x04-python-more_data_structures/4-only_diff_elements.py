@@ -7,4 +7,4 @@ def only_diff_elements(set_1, set_2):
             diff_elements.add(elements)
         else:
             diff_elements.remove(elements)
-    return diff_elements 
+    return diff_elements
