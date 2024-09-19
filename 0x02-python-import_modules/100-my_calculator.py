@@ -27,5 +27,5 @@ if __name__ == "__main__":
         print("unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
 
-    # Print the result
+    # Print the result.
     print("{} {} {} + {}".format(a, operator, b, result))
