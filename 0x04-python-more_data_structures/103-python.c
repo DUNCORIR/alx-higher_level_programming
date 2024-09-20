@@ -12,7 +12,7 @@ void print_python_list(PyObject *p)
 		return;
 	}
 
-	Py_ssize_t size = ((PyListObject *)p)->ob_base.ob_size;
+	Py_ssize_t size = PyList_Size(p);
 	Py_ssize_t allocated = ((PyListObject *)p)->allocated;
 
 	printf("[*] Size of the Python List = %zd\n", size);
@@ -21,9 +21,13 @@ void print_python_list(PyObject *p)
 
 	for (Py_ssize_t i = 0; i < size; i++)
 	{
-		PyObject *item = ((PyListObject *)p)->ob_item[i];
+		PyObject *item = PyList_GetItem(p, i);
 
 		printf("Element %zd: %s\n", i, item->ob_type->tp_name);
+		if (PyBytes_Check(item))
+		{
+			print_python_bytes(item);
+		}
 	}
 }
 
@@ -41,8 +45,8 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 
-	Py_ssize_t size = ((PyBytesObject *)p)->ob_base.ob_size;
-	char *bytes_content = ((PyBytesObject *)p)->ob_sval;
+	Py_ssize_t size = PyBytes_Size(p);
+	char *bytes_content = PyBytes_AsString(p);
 
 	printf("[.] bytes object info\n");
 	printf("  size: %zd\n", size);
