@@ -10,4 +10,4 @@ class Square:
     """
     This is an empty class that defines a square.
     """
-    pass  # The pass statement indicates this a empty class.
+    pass  # The pass statement indicates this an empty class.
