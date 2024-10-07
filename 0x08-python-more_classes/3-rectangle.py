@@ -103,7 +103,7 @@ class Rectangle:
         """
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join(["#" * self.width for _ in range(self.height)])
+        return '\n'.join(['#' * self.width for _ in range(self.height)])
 
     def __repr__(self):
         """Returns a formal string representation of the rectangle.
@@ -111,4 +111,4 @@ class Rectangle:
         Returns:
             str: The formal string rep.
         """
-        return f"Rectangle(width={self.width}, height={self.height})"
+        return f"<{self.__module__}.{self.__class__.__name__} object at {hex(id(self))}>"
