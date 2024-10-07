@@ -111,4 +111,5 @@ class Rectangle:
         Returns:
             str: The formal string rep.
         """
-        return f"<{self.__module__}.{self.__class__.__name__} object at {hex(id(self))}>"
+        return (f"<{self.__module__}.{self.__class__.__name__} "
+                f"object at {hex(id(self))}>")
