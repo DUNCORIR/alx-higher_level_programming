@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""
+N Queens Puzzle Solver
+"""
+
+
 import sys
 
 
