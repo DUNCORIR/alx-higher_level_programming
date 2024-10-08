@@ -1,0 +1,40 @@
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> matrix_divided([[1, 2], [3, 4]], 2)
+[[0.5, 1.0], [1.5, 2.0]]
+
+>>> matrix_divided([[100, 200], [300, 400]], 10)
+[[10.0, 20.0], [30.0, 40.0]]
+
+# Handling a matrix with different row sizes
+>>> matrix_divided([[1, 2], [3, 4, 5]], 2)
+Traceback (most recent call last):
+	...
+TypeError: Each row of the matrix must have the same size
+
+# Handling non-numeric matrix values
+>>> matrix_divided([[1, 2], [3, '4']], 2)
+Traceback (most recent call last):
+	...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Handling when 'div' is not a number
+>>> matrix_divided([[1, 2], [3, 4]], "2")
+Traceback (most recent call last):
+	...
+TypeError: div must be a number
+
+# Handling division by zero
+>>> matrix_divided([[1, 2], [3, 4]], 0)
+Traceback (most recent call last):
+	...
+ZeroDivisionError: division by zero
+
+# Single row matrix division
+>>> matrix_divided([[3, 6, 9]], 3)
+[[1.0, 2.0, 3.0]]
+
+# Large numbers and floating-point division
+>>> matrix_divided([[1000, 2000], [3000, 4000]], 1000)
+[[1.0, 2.0], [3.0, 4.0]]
