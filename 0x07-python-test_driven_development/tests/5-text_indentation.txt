@@ -1,0 +1,43 @@
+>>> text_indentation("Lorem ipsum dolor sit amet. Consectetur adipiscing elit? Quonam modo: Utrum igitur tibi litteram videor?")
+Lorem ipsum dolor sit amet.
+
+Consectetur adipiscing elit?
+
+Quonam modo: Utrum igitur tibi litteram videor?
+
+>>> text_indentation("Hello. How are you?")
+Hello.
+
+How are you?
+
+>>> text_indentation("This is a test? Yes, it is.")
+This is a test?
+
+Yes, it is.
+
+>>> text_indentation("This: is a test.")
+This:
+
+is a test.
+
+>>> text_indentation("")
+>>> text_indentation("Single line with no special char")
+Single line with no special char
+
+>>> text_indentation("Spaces after special characters.   More spaces?")
+Spaces after special characters.
+
+More spaces?
+
+>>> text_indentation(12)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> text_indentation(None)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> text_indentation("End of sentence:")
+End of sentence:
