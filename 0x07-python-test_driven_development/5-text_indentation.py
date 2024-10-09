@@ -12,21 +12,18 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     # Initialize an empty result string
-    result = ""
+    special_chars = ".?:"
     i = 0
-    length = len(text)
-
-    while i < length:
-        result += text[i]
+    while i < len(text):
+        # Print the current character
+        print(text[i], end="")
 
         # Check if the current character is one of the specified characters
-        if text[i] in ".?:":
-            result += "\n\n"  # Add two new lines after the character
+        if text[i] in special_chars:
+            print("\n")
+            i += 1
             # Skip any whitespace after the character
-            while i + 1 < length and text[i + 1] == ' ':
+            while i < len(text) and text[i] == ' ':
                 i += 1
-
+            continue
         i += 1
-
-    # Print the resulting text without leading or trailing spaces
-    print(result.strip())
