@@ -2,68 +2,60 @@
 """
 N Queens Puzzle Solver
 """
-
-
 import sys
 
 
-def print_usage_and_exit():
-    """Prints usage message and exits with status 1."""
-    print("Usage: nqueens N")
-    sys.exit(1)
-
-
-def is_valid(board, row, col):
-    """Checks if placing a queen at board[row][col] is valid."""
+def is_safe(board, row, col, N):
+    """Check if it's safe to place a queen at board[row][col]."""
+    # Check if there's a queen in the same column
     for i in range(row):
-        # Check the same column
-        if board[i] == col:
-            return False
-        # Check the diagonals
-        if abs(board[i] - col) == abs(i - row):
+        if board[i] == col or \
+            abs(board[i] - col) == abs(i - row):
             return False
     return True
 
+def solve_nqueens(N):
+    """Solve the N queens problem using backtracking.
+    Returns a list of all possible solutions.
+    Each solution is a list that represents the queen's position.
+    on each row.
+    """
+    def backtrack(board, row):
+        """Backtracking helper to place queens."""
+        if row == N:
+            solutions.append(board[:])  # Store the solution
+            return
+        for col in range(N):
+            if is_safe(board, row, col, N):
+                board[row] = col
+                backtrack(board, row + 1)
+                board[row] = -1  # Reset the row after backtracking
 
-def solve_nqueens(n, board, row, solutions):
-    """Uses backtracking to find all solutions for placing N queens."""
-    if row == n:
-        solutions.append(board[:])  # Found a valid solution
-        return
+        solutions = []  # This will hold all the solutions
+        board = [-1] * N  # Initialize board with -1 (no queens placed yet)
+        backtrack(board, 0)
+        return solutions
 
-    for col in range(n):
-        if is_valid(board, row, col):
-            board[row] = col  # Place queen
-            solve_nqueens(n, board, row + 1, solutions)  # Move to next row
-            # No need to remove the queen; the board[row] will be overwritten
-
-
-def main():
+if __name__ == "__main__":
     # Check for the correct number of arguments
     if len(sys.argv) != 2:
-        print_usage_and_exit()
+        print("Usage: nqueens N")
+        sys.exit(1)
 
-    # Validate the input
+    # Validate if N is an integer
     try:
-        n = int(sys.argv[1])
+        N = int(sys.argv[1])
     except ValueError:
         print("N must be a number")
         sys.exit(1)
 
-    if n < 4:
+    # Validate if N is at least 4
+    if N < 4:
         print("N must be at least 4")
         sys.exit(1)
 
-    # Initialize the board
-    board = [-1] * n  # Using -1 to indicate no queen placed
-    solutions = []  # To store all valid solutions
-
-    # Start solving the N queens problem
-    solve_nqueens(n, board, 0, solutions)
-
-    # Print all solutions
-    for solution in solutions:
-        print([[i, solution[i]] for i in range(n)])  # Format: [row, col]
-
-    if __name__ == "__main__":
-        main()
+    # Solve the N queens problem and print each solution
+    solutions = solve_nqueens(N)
+    if solutions:  # Ensure solutions exist
+        for solution in solutions:
+            print([[i, solution[i]] for i in range(N)])
