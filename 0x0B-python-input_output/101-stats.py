@@ -50,6 +50,6 @@ try:
 
 except KeyboardInterrupt:
     print_stats()
-    sys.exit(0)
+    raise
 
 print_stats()  # Prints final stats if script ends normally
