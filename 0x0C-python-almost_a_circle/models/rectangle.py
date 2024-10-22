@@ -80,9 +80,14 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """Prints the rectangle using '#' character."""
+        """Prints the rectangle using '#' character considering x and y"""
+        # Prints empty lines for y
+        for _ in range(self.y):
+            print()
+        # Print each row of the rectangle
         for _ in range(self.height):
-            print("#" * self.width)
+            # Print spaces for x, then rectangle characters.
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """Overrides __str__ method and return a represented string."""
