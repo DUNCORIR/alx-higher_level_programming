@@ -97,8 +97,8 @@ class Rectangle(Base):
             )
         )
 
-    def update(self, *args):
-        """Update Rectangle attributes using *args."""
+    def update(self, *args, **kwargs):
+        """Update Rectangle attributes using *args and **kwargs."""
         if args:
             if len(args) > 0:
                 self.id = args[0]
@@ -110,3 +110,17 @@ class Rectangle(Base):
                 self.x = args[3]
             if len(args) > 4:
                 self.y = args[4]
+
+        # Process kwargs only if args are not given.
+        if not args:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    self.id = value
+                elif key == 'width':
+                    self.width = value
+                elif key == 'height':
+                    self.height = value
+                elif key == 'x':
+                    self.x = value
+                elif key == 'y':
+                    self.y = value
