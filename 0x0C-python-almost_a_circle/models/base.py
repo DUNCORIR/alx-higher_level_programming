@@ -32,7 +32,7 @@ class Base:
         """Static method that returns the JSON string
         rep of list dictionaries.
         """
-        if list_dictionaries is None or 0:
-            return []
+        if not list_dictionaries:
+            return "[]"
         else:
-            return json
+            return json.dumps(list_dictionaries)
