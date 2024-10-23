@@ -30,7 +30,8 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Static method that returns the JSON string
+        """
+        Static method that returns the JSON string
         rep of list dictionaries.
 
         Args:
