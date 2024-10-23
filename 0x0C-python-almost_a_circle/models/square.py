@@ -34,6 +34,18 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        """Update attributes of the Square instance."""
+        if args and len(args) > 0:
+            attributes = ['id', 'size', 'x', 'y']
+            for i, value in enumerate(args):
+                if i < len(attributes):
+                    setattr(self, attributes[i], value)
+        else:
+            for key, value in kwargs.items():
+                if key in ['id', 'size', 'x', 'y']:
+                    setattr(self, key, value)
+
     def __str__(self):
         """Overrides __str__ method to provide a custom string reprentation."""
         return (
