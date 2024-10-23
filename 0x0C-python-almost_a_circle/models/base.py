@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import json
 
 """ The module constains a function that cintains a class base.
 """
@@ -26,3 +27,12 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    def to_json_string(list_dictionaries):
+        """Static method that returns the JSON string
+        rep of list dictionaries.
+        """
+        if list_dictionaries is None or 0:
+            return []
+        else:
+            return json
