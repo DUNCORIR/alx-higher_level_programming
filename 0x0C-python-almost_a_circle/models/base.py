@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-import json
-
 """ The module constains a function that cintains a class base.
 """
+
+
+import json
 
 
 class Base:
