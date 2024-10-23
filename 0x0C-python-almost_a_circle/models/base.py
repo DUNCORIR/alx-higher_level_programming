@@ -64,3 +64,21 @@ class Base:
         # Write the JSON string to a file
         with open(filename, "w") as file:
             file.write(json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Static method that returns list of the JSON string
+        representation.
+
+        Args:
+            json_string (str): A string representating a list of dictionaries.
+
+        Returns:
+            list: The list of dictionaries represented by json string.
+        """
+        # if json_string is None or empty, return an empty list.
+        if json_string is None or json_string == "":
+            return []
+
+        # Convert the json string to python list and return it.
+        return json.loads(json_string)
