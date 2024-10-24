@@ -116,7 +116,7 @@ class Base:
             List: A list of instances of the class.
         """
         filename = cls.__name__ + ".json"
-        if not os.path.exits(filename):
+        if not os.path.exists(filename):
             return []
 
         with open(filename, "r") as file:
