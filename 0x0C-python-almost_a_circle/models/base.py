@@ -82,3 +82,26 @@ class Base:
 
         # Convert the json string to python list and return it.
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Class method that returns an instance
+        with all attributes already set.
+
+        Args:
+            **dictionary: Dictionary with key_value pairs rep the attributes.
+
+        Returns:
+            An instance of the class with updated attributes.
+        """
+        # Dummy insatnces created using placeholder values.
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(1, 1)  # Placeholder for width and height
+        elif cls.__name__ == "Square":
+            dummy_instance = cls(1)  # Placeholder size
+
+        # Updating dummy instance using provided attributes.
+        dummy_instance.update(**dictionary)
+
+        # Return fully updated instance
+        return dummy_instance
