@@ -3,6 +3,7 @@
 """
 
 
+import os
 import json
 
 
@@ -105,3 +106,20 @@ class Base:
 
         # Return fully updated instance
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """Class method that returns a list of instances.
+
+        Retuns:
+            List: A list of instances of the class.
+        """
+        filename = cls.__name__ + ".json"
+        if not os.path.exists(filename):
+            return []
+
+        with open(filename, "r") as file:
+            json_string = file.read()
+
+        list_dicts = cls.from_json_string(json_string)
+        return [cls.create(**dict_obj) for dict_obj in list_dicts]
