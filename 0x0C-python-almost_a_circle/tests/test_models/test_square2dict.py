@@ -1,17 +1,39 @@
 #!/usr/bin/python3
-""" 13-main """
+"""Unit tests for the Square class - to_dictionary method."""
+import unittest
 from models.square import Square
 
-if __name__ == "__main__":
+class TestSquareToDictionary(unittest.TestCase):
+    """Tests for the to_dictionary method in the Square class."""
 
-    s1 = Square(10, 2, 1)
-    print(s1)
-    s1_dictionary = s1.to_dictionary()
-    print(s1_dictionary)
-    print(type(s1_dictionary))
+    def test_to_dictionary(self):
+        """Test the to_dictionary method."""
+        s1 = Square(10, 2, 1)
+        expected_dict = {
+            'id': s1.id,
+            'size': 10,
+            'x': 2,
+            'y': 1
+        }
+        self.assertEqual(s1.to_dictionary(), expected_dict)  # Check if the dictionary matches
 
-    s2 = Square(1, 1)
-    print(s2)
-    s2.update(**s1_dictionary)
-    print(s2)
-    print(s1 == s2)
+    def test_to_dictionary_with_updated_square(self):
+        """Test to_dictionary after updating the Square."""
+        s1 = Square(10, 2, 1)
+        s1.update(89, 4, 5, 6)  # Update the attributes
+        expected_dict = {
+            'id': 89,
+            'size': 4,
+            'x': 5,
+            'y': 6
+        }
+        self.assertEqual(s1.to_dictionary(), expected_dict)  # Check if the updated dictionary matches
+
+    def test_to_dictionary_type(self):
+        """Test the type of the dictionary returned by to_dictionary."""
+        s1 = Square(10, 2, 1)
+        s1_dictionary = s1.to_dictionary()
+        self.assertIsInstance(s1_dictionary, dict)  # Check if the returned type is a dictionary
+
+if __name__ == '__main__':
+    unittest.main()
