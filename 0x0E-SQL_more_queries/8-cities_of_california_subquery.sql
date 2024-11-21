@@ -3,11 +3,16 @@
 
 USE hbtn_0d_usa;
 
-SELECT id, name  -- Retrieve all cities in California
-FROM cities
-WHERE state_id = (
+SELECT
+	cities.id,
+	cities.name  -- Retrieve all cities in California
+FROM
+	cities
+WHERE
+	cities.state_id = (
 	SELECT id
 	FROM states
 	WHERE name = 'California'
 )
-ORDER BY cities.id ASC;
+ORDER BY
+	cities.id ASC;
