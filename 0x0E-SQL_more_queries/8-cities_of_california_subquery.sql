@@ -3,9 +3,9 @@
 
 USE hbtn_0d_usa;
 
-SELECT cities.id, cities.name  -- Retrieve all cities in California
+SELECT id, name  -- Retrieve all cities in California
 FROM cities
-WHERE cities.state_id = (
+WHERE state_id = (
 	SELECT id
 	FROM states
 	WHERE name = 'California'
