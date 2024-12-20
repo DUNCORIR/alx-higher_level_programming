@@ -8,7 +8,7 @@ const fs = require('fs');
 const args = process.argv.slice(2); // ignore 1st two args
 
 // Check if all 3 files paths provided.
-if (args.length < 3) {
+if (args.length !== 3) {
   console.error('usage: ./102-concat.js <file1> <file2> <destination>');
   process.exit(1);
 }
