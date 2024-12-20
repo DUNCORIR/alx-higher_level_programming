@@ -18,10 +18,10 @@ const [file1, file2, destination] = args;
 try {
   const content1 = fs.readFileSync(file1, 'utf-8');
   const content2 = fs.readFileSync(file2, 'utf-8');
-
   // Concatenate the content
-  const combinedContent = `${content1}\n${content2}`;
+  const combinedContent = `${content1}\n${content2}\n`;
 
+  // Write to the destination file
   fs.writeFileSync(destination, combinedContent, 'utf-8');
 } catch (error) {
   // Handle errors gracefully
