@@ -25,6 +25,6 @@ try {
   fs.writeFileSync(destination, combinedContent);
 } catch (error) {
   // Handle errors gracefully
-  console.error('Error:', `${err.message}`);
+  console.error('Error:', `${error.message}`);
   process.exit(1);
 }
