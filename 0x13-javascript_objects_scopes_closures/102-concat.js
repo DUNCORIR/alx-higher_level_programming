@@ -16,15 +16,15 @@ if (args.length !== 3) {
 const [file1, file2, destination] = args;
 
 try {
-  const content1 = fs.readFileSync(file1, 'utf-8');
-  const content2 = fs.readFileSync(file2, 'utf-8');
+  const content1 = fs.readFileSync(file1, 'utf-8').trimEnd();
+  const content2 = fs.readFileSync(file2, 'utf-8').trimEnd();
   // Concatenate the content
   const combinedContent = `${content1}\n${content2}\n`;
 
   // Write to the destination file
-  fs.writeFileSync(destination, combinedContent, 'utf-8');
+  fs.writeFileSync(destination, combinedContent);
 } catch (error) {
   // Handle errors gracefully
-  console.error('Error:', error.message);
+  console.error('Error:', `${err.message}`);
   process.exit(1);
 }
