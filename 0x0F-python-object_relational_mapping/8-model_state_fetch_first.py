@@ -1,39 +1,46 @@
 #!/usr/bin/python3
 """
-Script prints the first State Object from thr database
-hbtn_0e_6_usa using SQLAlchemy.
+Script that prints the first State
+object from the database hbtn_0e_6_usa
 """
 
 
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
-import sys
 
 
 def main():
-    # Retrieve command line arguments
+    # Check for the correct number of arguments
+    if len(sys.argv) != 4:
+        return
+
+    # Get the MySQL username, password, and database name from the arguments
     username = sys.argv[1]
     password = sys.argv[2]
-    database = sys.argv[3]
+    db_name = sys.argv[3]
 
-    # Create database engine
+    # Create an engine that connects to the MySQL server
     engine = create_engine(
-        f'mysql+mysqldb://{username}:{password}@localhost:3306/{database}'
+            f'mysql+mysqldb://{username}:{password}@localhost:3306/{db_name}'
     )
-    # Create configured "Session" class and a session instance
+    # Bind the engine to the Base
+    Base.metadata.create_all(engine)
+
+    # Create a session
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query for first State object
+    # Query to fetch the first State object ordered by id
     first_state = session.query(State).order_by(State.id).first()
-    if first_state is None:
-        print("Nothing")
-    else:
+
+    # Check if a state is found, and print the result
+    if first_state:
         print(f"{first_state.id}: {first_state.name}")
+    else:
+        print("Nothing")
 
-    # Close the session
-    session.close()
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
