@@ -9,7 +9,8 @@ from model_state import Base, State
 from model_city import City
 import sys
 
-if __name__ == "__main__":
+
+def main():
     # Check for correct arguments
     if len(sys.argv) != 4:
         print(
@@ -41,3 +42,7 @@ if __name__ == "__main__":
 
     # Close session
     session.close()
+
+
+if __name__ == "__main__":
+    main()
