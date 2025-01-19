@@ -1,0 +1,2 @@
+Time Complexity: O(log(n))
+Space Complexity: O(log(n)) due to the recursion stack in the worst case (binary search approach).
